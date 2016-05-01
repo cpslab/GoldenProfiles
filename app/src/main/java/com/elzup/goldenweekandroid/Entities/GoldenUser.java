@@ -1,4 +1,4 @@
-package com.elzup.goldenweekandroid.Entities;
+package com.elzup.goldenweekandroid.entities;
 
 public class GoldenUser {
     // ニックネーム,学籍番号,今期アニメ,好きなアニメ,好きな言語,画像

@@ -1,4 +1,4 @@
-package com.elzup.goldenweekandroid;
+package com.elzup.goldenweekandroid.network;
 
 import java.io.IOException;
 
