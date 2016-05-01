@@ -51,10 +51,10 @@ public class GoldenUserAdapter extends RecyclerView.Adapter<GoldenUserAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
         GoldenUser user = mDataset.get(position);
         holder.nameTextView.setText(user.getName());
-        holder.idTextView.setText(user.getStudentID());
-        holder.currentAnimeTextView.setText(user.getCurrentAnime());
-        holder.favoriteAnimeTextView.setText(user.getFavoriteAnime());
-        holder.languageTextView.setText(user.getLanguage());
+        holder.idTextView.setText(user.getDisplayID());
+        holder.currentAnimeTextView.setText( "　試聴アニメ: " + user.getCurrentAnime());
+        holder.favoriteAnimeTextView.setText("好きなアニメ: " + user.getFavoriteAnime());
+        holder.languageTextView.setText(     "　　　　言語: " + user.getLanguage());
         Glide.with(holder.iconImageView.getContext()).load(user.getImgURL()).into(holder.iconImageView);
     }
 

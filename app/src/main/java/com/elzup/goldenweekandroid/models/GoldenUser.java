@@ -51,4 +51,8 @@ public class GoldenUser {
     public void setImgURL(String imgURL) {
         this.imgURL = imgURL;
     }
+
+    public String getDisplayID() {
+        return "@" + this.getStudentID();
+    }
 }
