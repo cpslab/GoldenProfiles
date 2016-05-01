@@ -5,17 +5,19 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import java.io.IOException;
-import java.util.ArrayList;
+import com.elzup.goldenweekandroid.Entities.GoldenUser;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.List;
+
+import au.com.bytecode.opencsv.CSVReader;
+import au.com.bytecode.opencsv.bean.ColumnPositionMappingStrategy;
+import au.com.bytecode.opencsv.bean.CsvToBean;
 import okhttp3.Response;
 import rx.Subscriber;
 
-/**
- * Created by hiro on 16/05/01.
- */
 public class MyActivity extends Activity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -36,21 +38,57 @@ public class MyActivity extends Activity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         GoogleSpreadSheet.client().request().subscribe(new Subscriber<Response>() {
-                     @Override
-                     public void onCompleted() {
-                     }
-                     @Override
-                     public void onError(Throwable e) {
+            @Override
+            public void onCompleted() {
+            }
 
-                     }
-                    @Override
-                    public void onNext(Response response) {
-                        // response
-                        ArrayList<DayItem> dayItems = new ArrayList<>();
-                        mAdapter = new MyAdapter(dayItems);
-                        mRecyclerView.setAdapter(mAdapter);
-                    }
-                });
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(Response response) {
+                // response
+                try {
+                    String csvText = response.body().string();
+                    List<GoldenUser> dayItems = opencsvToBean(csvText);
+                    mAdapter = new MyAdapter(dayItems);
+                    mRecyclerView.setAdapter(mAdapter);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public static List<GoldenUser> opencsvToBean(String text) {
+        List<GoldenUser> users = new ArrayList<>();
+        try {
+            CSVReader reader = new CSVReader(new StringReader(text));
+            String[] headers = reader.readNext();
+            for (String[] params: reader.readAll()) {
+                GoldenUser user = new GoldenUser();
+                // ニックネーム,学籍番号,今期アニメ,好きなアニメ,好きな言語,画像
+                user.setName(params[0]);
+                user.setStudentID(params[1]);
+                user.setCurrentAnime(params[2]);
+                user.setFavoriteAnime(params[3]);
+                user.setLanguage(params[4]);
+                user.setImgURL(params[5]);
+                users.add(user);
+            }
+
+            // NOTE: 謎の opencv Error
+            // ColumnPositionMappingStrategy<GoldenUser> strat = new ColumnPositionMappingStrategy<>();
+            // strat.setType(GoldenUser.class);
+            // strat.setColumnMapping(HEADER);
+            // CsvToBean<GoldenUser> csv = new CsvToBean<>();
+            // return csv.parse(strat, reader);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return users;
     }
 
 }

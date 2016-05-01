@@ -2,20 +2,17 @@ package com.elzup.goldenweekandroid;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.io.IOException;
-import java.util.ArrayList;
+import com.elzup.goldenweekandroid.Entities.GoldenUser;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    private ArrayList<DayItem> mDataset;
+    private List<GoldenUser> mDataset;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -34,7 +31,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(ArrayList<DayItem> myDataset) {
+    public MyAdapter(List<GoldenUser> myDataset) {
         mDataset = myDataset;
     }
 
@@ -56,10 +53,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        DayItem item = mDataset.get(position);
-        holder.dayTextView.setText(item.getDayText());
-        holder.dateTextView.setText(item.getDateText());
-        holder.mainTextView.setText(item.getText());
+        GoldenUser user = mDataset.get(position);
+        holder.dayTextView.setText(user.getName());
+        holder.dateTextView.setText(user.getCurrentAnime());
+        holder.mainTextView.setText(user.getFavoriteAnime());
     }
 
     // Return the size of your dataset (invoked by the layout manager)
