@@ -1,9 +1,11 @@
 package com.elzup.goldenweekandroid.adapters;
 
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.elzup.goldenweekandroid.R;
@@ -15,15 +17,21 @@ public class GoldenUserAdapter extends RecyclerView.Adapter<GoldenUserAdapter.Vi
     private List<GoldenUser> mDataset;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView dateTextView;
-        public TextView dayTextView;
-        public TextView mainTextView;
+        public TextView nameTextView;
+        public TextView idTextView;
+        public TextView currentAnimeTextView;
+        public TextView favoriteAnimeTextView;
+        public TextView languageTextView;
+        public ImageView iconImageView;
 
         public ViewHolder(View v) {
             super(v);
-            dateTextView = (TextView) v.findViewById(R.id.date_text);
-            dayTextView = (TextView) v.findViewById(R.id.day_text);
-            mainTextView = (TextView) v.findViewById(R.id.info_text);
+            nameTextView = (TextView) v.findViewById(R.id.user_name);
+            idTextView = (TextView) v.findViewById(R.id.user_id);
+            currentAnimeTextView = (TextView) v.findViewById(R.id.user_c_anime);
+            favoriteAnimeTextView = (TextView) v.findViewById(R.id.user_f_anime);
+            languageTextView = (TextView) v.findViewById(R.id.user_language);
+            iconImageView = (ImageView) v.findViewById(R.id.user_icon);
         }
     }
 
@@ -35,16 +43,18 @@ public class GoldenUserAdapter extends RecyclerView.Adapter<GoldenUserAdapter.Vi
     public GoldenUserAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                            int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.my_text_view, parent, false);
+                .inflate(R.layout.golden_user_view, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         GoldenUser user = mDataset.get(position);
-        holder.dayTextView.setText(user.getName());
-        holder.dateTextView.setText(user.getCurrentAnime());
-        holder.mainTextView.setText(user.getFavoriteAnime());
+        holder.nameTextView.setText(user.getName());
+        holder.idTextView.setText(user.getStudentID());
+        holder.currentAnimeTextView.setText(user.getCurrentAnime());
+        holder.favoriteAnimeTextView.setText(user.getFavoriteAnime());
+        holder.languageTextView.setText(user.getLanguage());
     }
 
     @Override
