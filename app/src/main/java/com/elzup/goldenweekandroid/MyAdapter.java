@@ -7,7 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private ArrayList<DayItem> mDataset;
@@ -55,7 +60,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.dayTextView.setText(item.getDayText());
         holder.dateTextView.setText(item.getDateText());
         holder.mainTextView.setText(item.getText());
-
     }
 
     // Return the size of your dataset (invoked by the layout manager)
