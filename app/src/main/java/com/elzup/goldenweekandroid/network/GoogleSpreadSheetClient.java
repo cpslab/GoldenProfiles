@@ -12,14 +12,18 @@ import rx.schedulers.Schedulers;
 
 public class GoogleSpreadSheetClient {
 
-    public Observable<Response> request() {
+    private static String HOST = "https://docs.google.com";
+    private static String SPREADSHEETS_ENDPOINT = "/spreadsheets/d/";
+    private static String SPREADSHEETS_CSV_TAIL = "/pub?output=csv";
+
+    public Observable<Response> request(final String id) {
         return Observable.create(new Observable.OnSubscribe<Response>() {
             OkHttpClient client = new OkHttpClient();
 
             @Override
             public void call(Subscriber<? super Response> subscriber) {
                 try {
-                    String url = "https://docs.google.com/spreadsheets/d/1qCSHtAntOGwmYV3bCBy3JlrxUGqNP0DuTEJ_YvrVaxc/pub?output=csv";
+                    String url = HOST + SPREADSHEETS_ENDPOINT + id + SPREADSHEETS_CSV_TAIL;
                     Response response = client.newCall(new Request.Builder().url(url).build()).execute();
                     subscriber.onNext(response);
                     subscriber.onCompleted();

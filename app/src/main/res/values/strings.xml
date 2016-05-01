@@ -3,8 +3,4 @@
     <string name="action_settings">Settings</string>
 
     <string name="spreadsheet_id">1qCSHtAntOGwmYV3bCBy3JlrxUGqNP0DuTEJ_YvrVaxc</string>
-    <string name="spreadsheet_sheet_id">od6</string>
-    <string name="spreadsheet_api_host">https://spreadsheets.google.com</string>
-    <string name="spreadsheet_api_path">/feeds/cells/</string>
-    <string name="spreadsheet_api_tail_json">/public/values\?alt\=json</string>
 </resources>

@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        GoogleSpreadSheet.client().request().subscribe(new Subscriber<Response>() {
+        GoogleSpreadSheet.client().request(getString(R.string.spreadsheet_id)).subscribe(new Subscriber<Response>() {
             @Override
             public void onCompleted() {
             }
