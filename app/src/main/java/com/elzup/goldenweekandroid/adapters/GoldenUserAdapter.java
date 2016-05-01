@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.elzup.goldenweekandroid.R;
 import com.elzup.goldenweekandroid.models.GoldenUser;
 
@@ -55,6 +56,7 @@ public class GoldenUserAdapter extends RecyclerView.Adapter<GoldenUserAdapter.Vi
         holder.currentAnimeTextView.setText(user.getCurrentAnime());
         holder.favoriteAnimeTextView.setText(user.getFavoriteAnime());
         holder.languageTextView.setText(user.getLanguage());
+        Glide.with(holder.iconImageView.getContext()).load(user.getImgURL()).into(holder.iconImageView);
     }
 
     @Override
