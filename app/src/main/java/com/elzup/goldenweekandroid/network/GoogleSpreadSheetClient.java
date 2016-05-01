@@ -1,6 +1,10 @@
 package com.elzup.goldenweekandroid.network;
 
+import com.elzup.goldenweekandroid.models.GoldenUser;
+import com.elzup.goldenweekandroid.util.OpenCsvUtil;
+
 import java.io.IOException;
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -16,16 +20,17 @@ public class GoogleSpreadSheetClient {
     private static String SPREADSHEETS_ENDPOINT = "/spreadsheets/d/";
     private static String SPREADSHEETS_CSV_TAIL = "/pub?output=csv";
 
-    public Observable<Response> request(final String id) {
-        return Observable.create(new Observable.OnSubscribe<Response>() {
+    public Observable<List<GoldenUser>> requestGoldenUsers(final String id) {
+        return Observable.create(new Observable.OnSubscribe<List<GoldenUser>>() {
             OkHttpClient client = new OkHttpClient();
 
             @Override
-            public void call(Subscriber<? super Response> subscriber) {
+            public void call(Subscriber<? super List<GoldenUser>> subscriber) {
                 try {
                     String url = HOST + SPREADSHEETS_ENDPOINT + id + SPREADSHEETS_CSV_TAIL;
                     Response response = client.newCall(new Request.Builder().url(url).build()).execute();
-                    subscriber.onNext(response);
+                    List<GoldenUser> users = OpenCsvUtil.toGoldenUsers(response.body().string());
+                    subscriber.onNext(users);
                     subscriber.onCompleted();
                     if (!response.isSuccessful()) subscriber.onError(new Exception("error"));
                 } catch (IOException e) {
