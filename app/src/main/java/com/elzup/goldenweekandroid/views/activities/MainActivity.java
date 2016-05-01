@@ -2,6 +2,7 @@ package com.elzup.goldenweekandroid.views.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -14,7 +15,7 @@ import java.util.List;
 
 import rx.Subscriber;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
