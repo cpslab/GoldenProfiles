@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import rx.Subscriber;
 
 /**
  * Created by hiro on 16/05/01.
@@ -34,33 +35,22 @@ public class MyActivity extends Activity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        // specify an adapter (see also next example)
-        ArrayList<DayItem> dayItems = requestDatas();
-        mAdapter = new MyAdapter(dayItems);
-        mRecyclerView.setAdapter(mAdapter);
+        GoogleSpreadSheet.client().request().subscribe(new Subscriber<Response>() {
+                     @Override
+                     public void onCompleted() {
+                     }
+                     @Override
+                     public void onError(Throwable e) {
+
+                     }
+                    @Override
+                    public void onNext(Response response) {
+                        // response
+                        ArrayList<DayItem> dayItems = new ArrayList<>();
+                        mAdapter = new MyAdapter(dayItems);
+                        mRecyclerView.setAdapter(mAdapter);
+                    }
+                });
     }
-
-    private ArrayList<DayItem> requestDatas() {
-        try {
-            String csv = getByOkHttp();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return new ArrayList<>();
-    }
-
-    private String getByOkHttp() throws IOException {
-        String url = "https://docs.google.com/spreadsheets/d/1qCSHtAntOGwmYV3bCBy3JlrxUGqNP0DuTEJ_YvrVaxc/pub\\?output\\=csv";
-        Request request = new Request.Builder()
-                .url(url)
-                .get()
-                .build();
-
-        OkHttpClient client = new OkHttpClient();
-
-        Response response = client.newCall(request).execute();
-        return response.body().string();
-    }
-
 
 }
