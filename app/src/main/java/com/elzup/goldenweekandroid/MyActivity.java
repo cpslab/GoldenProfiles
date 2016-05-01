@@ -31,8 +31,9 @@ public class MyActivity extends Activity {
 
             // specify an adapter (see also next example)
             ArrayList<DayItem> dayItems = new ArrayList<>();
-            String[] myDataset = new String[]{ "hoge", "fuga" };
-            mAdapter = new MyAdapter(myDataset);
+            dayItems.add(new DayItem("1", "月", "テスト"));
+            dayItems.add(new DayItem("2", "火", "テスト"));
+            mAdapter = new MyAdapter(dayItems);
             mRecyclerView.setAdapter(mAdapter);
         }
 
