@@ -5,66 +5,71 @@
     android:background="@android:color/white"
     android:orientation="horizontal">
 
-    <android.support.v7.widget.CardView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/cv"
+        android:padding="16dp"
         >
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/user_icon"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/black"
+            android:layout_marginRight="16dp"
+            />
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            >
+            android:layout_marginRight="5dip"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/user_icon"
+            android:layout_toLeftOf="@+id/user_id"
+            android:text="あいうえおかきくけこさしすせそ"
+            android:textColor="@android:color/black"
+            android:textSize="16dip"
+            />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/user_icon"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="16dp"
-                />
+        <TextView
+            android:id="@+id/user_id"
+            android:text="\@00id000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/user_name"
-                android:layout_toRightOf="@+id/user_icon"
-                android:layout_alignParentTop="true"
-                android:textSize="30sp"
-                />
+        <TextView
+            android:id="@+id/user_c_anime"
+            android:text="今期アニメ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/user_icon"
+            android:layout_below="@+id/user_name"
+            />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/user_id"
-                android:layout_toRightOf="@+id/user_name"
-                />
+        <TextView
+            android:id="@+id/user_f_anime"
+            android:text="好きなアニメ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/user_icon"
+            android:layout_below="@+id/user_c_anime"
+            />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/user_c_anime"
-                android:layout_below="@+id/user_name"
-                />
+        <TextView
+            android:id="@+id/user_language"
+            android:text="言語"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/user_icon"
+            android:layout_below="@+id/user_f_anime"
+            />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/user_f_anime"
-                android:layout_below="@+id/user_c_anime"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/user_language"
-                android:layout_below="@+id/user_f_anime"
-                />
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
+    </RelativeLayout>
 
 </LinearLayout>

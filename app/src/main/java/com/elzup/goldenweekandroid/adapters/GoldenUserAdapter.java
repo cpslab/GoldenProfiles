@@ -1,6 +1,10 @@
 package com.elzup.goldenweekandroid.adapters;
 
+import android.content.Context;
+import android.graphics.Bitmap;
 import android.media.Image;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.elzup.goldenweekandroid.R;
 import com.elzup.goldenweekandroid.models.GoldenUser;
 
