@@ -2,9 +2,11 @@ package com.elzup.goldenweekandroid.views.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.elzup.goldenweekandroid.R;
 import com.elzup.goldenweekandroid.adapters.GoldenUserAdapter;
@@ -38,6 +40,29 @@ public class MainActivity extends AppCompatActivity {
             public void onNext(List<GoldenUser> users) {
                 mAdapter = new GoldenUserAdapter(users);
                 mRecyclerView.setAdapter(mAdapter);
+            }
+        });
+
+        loadUsers();
+
+        FloatingActionButton myFab = (FloatingActionButton) findViewById(R.id.reload_btn);
+        myFab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                loadUsers();
+            }
+        });
+    }
+
+    private void loadUsers() {
+        GoogleSpreadSheet.client().requestGoldenUsers(getString(R.string.spreadsheet_id)).subscribe(new Subscriber<List<GoldenUser>>() {
+            @Override public void onCompleted() { }
+            @Override public void onError(Throwable e) { }
+            @Override
+            public void onNext(List<GoldenUser> users) {
+                mAdapter = new GoldenUserAdapter(users);
+                // NOTE: 怪しい
+                mRecyclerView.setAdapter(mAdapter);
+                mRecyclerView.notifyAll();
             }
         });
     }
