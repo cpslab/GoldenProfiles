@@ -18,6 +18,7 @@
             android:text="99"
             android:textColor="@android:color/black" />
 
+
         <TextView
             android:id="@+id/day_text"
             android:layout_width="wrap_content"
