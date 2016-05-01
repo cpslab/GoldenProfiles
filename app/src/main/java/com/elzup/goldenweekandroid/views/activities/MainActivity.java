@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import com.elzup.goldenweekandroid.adapters.GoldenUserAdapter;
 import com.elzup.goldenweekandroid.managers.GoogleSpreadSheet;
 import com.elzup.goldenweekandroid.R;
-import com.elzup.goldenweekandroid.entities.GoldenUser;
+import com.elzup.goldenweekandroid.models.GoldenUser;
 
 import java.io.IOException;
 import java.io.StringReader;

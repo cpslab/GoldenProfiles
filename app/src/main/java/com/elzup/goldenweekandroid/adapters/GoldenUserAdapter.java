@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.elzup.goldenweekandroid.R;
-import com.elzup.goldenweekandroid.entities.GoldenUser;
+import com.elzup.goldenweekandroid.models.GoldenUser;
 
 import java.util.List;
 
