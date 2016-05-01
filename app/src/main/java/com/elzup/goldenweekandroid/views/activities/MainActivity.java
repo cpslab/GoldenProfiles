@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import com.elzup.goldenweekandroid.adapters.GoldenUserAdapter;
 import com.elzup.goldenweekandroid.managers.GoogleSpreadSheet;
 import com.elzup.goldenweekandroid.R;
-import com.elzup.goldenweekandroid.entities.GoldenUser;
+import com.elzup.goldenweekandroid.models.GoldenUser;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.my_activity);
+        setContentView(R.layout.main_activity);
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
         // use this setting to improve performance if you know that changes
