@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private FloatingActionButton reloadButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +44,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        this.reloadButton = (FloatingActionButton) findViewById(R.id.reload_btn);
+        reloadButton.hide();
         loadUsers();
 
-        FloatingActionButton myFab = (FloatingActionButton) findViewById(R.id.reload_btn);
-        myFab.setOnClickListener(new View.OnClickListener() {
+        this.reloadButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                reloadButton.hide();
                 loadUsers();
             }
         });
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 mAdapter = new GoldenUserAdapter(users);
                 // NOTE: 怪しい
                 mRecyclerView.setAdapter(mAdapter);
+                reloadButton.show();
                 mRecyclerView.notifyAll();
             }
         });
