@@ -1,4 +1,4 @@
-package com.elzup.goldenweekandroid.adapters;
+package com.elzup.goldenprofile.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,8 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.elzup.goldenweekandroid.R;
-import com.elzup.goldenweekandroid.models.GoldenUser;
+import com.elzup.goldenprofile.R;
+import com.elzup.goldenprofile.models.GoldenUser;
 
 import java.util.List;
 

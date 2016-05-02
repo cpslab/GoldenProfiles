@@ -1,7 +1,7 @@
-package com.elzup.goldenweekandroid.network;
+package com.elzup.goldenprofile.network;
 
-import com.elzup.goldenweekandroid.models.GoldenUser;
-import com.elzup.goldenweekandroid.util.OpenCsvUtil;
+import com.elzup.goldenprofile.models.GoldenUser;
+import com.elzup.goldenprofile.util.OpenCsvUtil;
 
 import java.io.IOException;
 import java.util.List;

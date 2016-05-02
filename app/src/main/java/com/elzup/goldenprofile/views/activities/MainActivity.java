@@ -1,4 +1,4 @@
-package com.elzup.goldenweekandroid.views.activities;
+package com.elzup.goldenprofile.views.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,10 +7,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.elzup.goldenweekandroid.R;
-import com.elzup.goldenweekandroid.adapters.GoldenUserAdapter;
-import com.elzup.goldenweekandroid.managers.GoogleSpreadSheet;
-import com.elzup.goldenweekandroid.models.GoldenUser;
+import com.elzup.goldenprofile.R;
+import com.elzup.goldenprofile.adapters.GoldenUserAdapter;
+import com.elzup.goldenprofile.managers.GoogleSpreadSheet;
+import com.elzup.goldenprofile.models.GoldenUser;
 
 import java.util.List;
 

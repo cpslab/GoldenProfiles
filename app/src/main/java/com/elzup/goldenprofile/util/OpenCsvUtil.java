@@ -1,6 +1,6 @@
-package com.elzup.goldenweekandroid.util;
+package com.elzup.goldenprofile.util;
 
-import com.elzup.goldenweekandroid.models.GoldenUser;
+import com.elzup.goldenprofile.models.GoldenUser;
 
 import java.io.StringReader;
 import java.util.ArrayList;
