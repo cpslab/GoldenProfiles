@@ -49,6 +49,7 @@ public class GoldenUserAdapter extends RecyclerView.Adapter<GoldenUserAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        // 表示 Bind 部分
         GoldenUser user = mDataset.get(position);
         holder.nameTextView.setText(user.getName());
         holder.idTextView.setText(user.getDisplayID());

@@ -46,11 +46,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadUsers() {
+        // 通信は別スレッドで呼び出し
         GoogleSpreadSheet.client().requestGoldenUsers(getString(R.string.spreadsheet_id)).subscribe(new Subscriber<List<GoldenUser>>() {
             @Override public void onCompleted() { }
             @Override public void onError(Throwable e) { }
             @Override
             public void onNext(List<GoldenUser> users) {
+                // レスポンスをもらったら呼ばれる場所2, Bean になった状態でもらう
                 mAdapter = new GoldenUserAdapter(users);
                 // NOTE: 怪しい
                 mRecyclerView.setAdapter(mAdapter);

@@ -10,11 +10,18 @@ import au.com.bytecode.opencsv.CSVReader;
 
 public class OpenCsvUtil {
 
+
+    /**
+     * Csv を受け取り opencsv を使い Bean に parse する
+     * @param csvText
+     * @return
+     */
     public static List<GoldenUser> toGoldenUsers(String csvText) {
         List<GoldenUser> users = new ArrayList<>();
         try {
             CSVReader reader = new CSVReader(new StringReader(csvText));
             reader.readNext();
+
             for (String[] params: reader.readAll()) {
                 GoldenUser user = new GoldenUser();
                 // ニックネーム,学籍番号,今期アニメ,好きなアニメ,好きな言語,画像
