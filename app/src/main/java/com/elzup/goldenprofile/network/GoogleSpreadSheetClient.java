@@ -1,7 +1,7 @@
-package com.elzup.goldenweekandroid.network;
+package com.elzup.goldenprofile.network;
 
-import com.elzup.goldenweekandroid.models.GoldenUser;
-import com.elzup.goldenweekandroid.util.OpenCsvUtil;
+import com.elzup.goldenprofile.models.GoldenUser;
+import com.elzup.goldenprofile.util.OpenCsvUtil;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,6 +26,7 @@ public class GoogleSpreadSheetClient {
 
             @Override
             public void call(Subscriber<? super List<GoldenUser>> subscriber) {
+                // レスポンスをもらったら呼ばれる場所1, response を受け取り GoldenUser のリストにして 次の subscribe に渡す
                 try {
                     String url = HOST + SPREADSHEETS_ENDPOINT + id + SPREADSHEETS_CSV_TAIL;
                     Response response = client.newCall(new Request.Builder().url(url).build()).execute();

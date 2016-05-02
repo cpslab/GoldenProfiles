@@ -1,8 +1,9 @@
-package com.elzup.goldenweekandroid.managers;
+package com.elzup.goldenprofile.managers;
 
-import com.elzup.goldenweekandroid.network.GoogleSpreadSheetClient;
+import com.elzup.goldenprofile.network.GoogleSpreadSheetClient;
 
 public class GoogleSpreadSheet {
+    // Client の Singleton
     static GoogleSpreadSheetClient client;
 
     static public GoogleSpreadSheetClient client() {

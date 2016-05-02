@@ -1,4 +1,4 @@
-package com.elzup.goldenweekandroid.adapters;
+package com.elzup.goldenprofile.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,8 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.elzup.goldenweekandroid.R;
-import com.elzup.goldenweekandroid.models.GoldenUser;
+import com.elzup.goldenprofile.R;
+import com.elzup.goldenprofile.models.GoldenUser;
 
 import java.util.List;
 
@@ -43,12 +43,13 @@ public class GoldenUserAdapter extends RecyclerView.Adapter<GoldenUserAdapter.Vi
     public GoldenUserAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                            int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.golden_user_view, parent, false);
+                .inflate(R.layout.view_user_golden, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        // 表示 Bind 部分
         GoldenUser user = mDataset.get(position);
         holder.nameTextView.setText(user.getName());
         holder.idTextView.setText(user.getDisplayID());

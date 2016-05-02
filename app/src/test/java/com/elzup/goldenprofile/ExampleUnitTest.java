@@ -1,4 +1,4 @@
-package com.elzup.goldenweekandroid;
+package com.elzup.goldenprofile;
 
 import org.junit.Test;
 
