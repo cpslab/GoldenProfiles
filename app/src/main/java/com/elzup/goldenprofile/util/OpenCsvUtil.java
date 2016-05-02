@@ -13,8 +13,8 @@ public class OpenCsvUtil {
 
     /**
      * Csv を受け取り opencsv を使い Bean に parse する
-     * @param csvText
-     * @return
+     * @param csvText Parce target text.
+     * @return Golden users.
      */
     public static List<GoldenUser> toGoldenUsers(String csvText) {
         List<GoldenUser> users = new ArrayList<>();

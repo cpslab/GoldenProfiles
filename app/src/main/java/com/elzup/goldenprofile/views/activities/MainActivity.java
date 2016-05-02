@@ -19,7 +19,6 @@ import rx.Subscriber;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
     private FloatingActionButton reloadButton;
 
     @Override
@@ -28,12 +27,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
+        assert mRecyclerView != null;
         mRecyclerView.setHasFixedSize(true);
 
-        mLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         this.reloadButton = (FloatingActionButton) findViewById(R.id.reload_btn);
+        assert reloadButton != null;
         reloadButton.hide();
         loadUsers();
 
