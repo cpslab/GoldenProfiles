@@ -43,7 +43,7 @@ public class GoldenUserAdapter extends RecyclerView.Adapter<GoldenUserAdapter.Vi
     public GoldenUserAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                            int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.golden_user_view, parent, false);
+                .inflate(R.layout.view_user_golden, parent, false);
         return new ViewHolder(v);
     }
 

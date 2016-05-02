@@ -1,6 +1,5 @@
 package com.elzup.goldenweekandroid.views.activities;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -26,23 +25,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
+        setContentView(R.layout.activity_main);
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
         mRecyclerView.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-
-        GoogleSpreadSheet.client().requestGoldenUsers(getString(R.string.spreadsheet_id)).subscribe(new Subscriber<List<GoldenUser>>() {
-            @Override public void onCompleted() { }
-            @Override public void onError(Throwable e) { }
-            @Override
-            public void onNext(List<GoldenUser> users) {
-                mAdapter = new GoldenUserAdapter(users);
-                mRecyclerView.setAdapter(mAdapter);
-            }
-        });
 
         this.reloadButton = (FloatingActionButton) findViewById(R.id.reload_btn);
         reloadButton.hide();
